@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === "production" ? "https://paycore-1.onrender.com" : "http://localhost:8080");
 const PAYSTACK_URL = process.env.NEXT_PUBLIC_PAYSTACK_API_URL|| "https://api.paystack.co";
 
 // Create an axios instance
