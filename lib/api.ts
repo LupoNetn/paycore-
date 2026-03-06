@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const PAYSTACK_URL = process.env.NEXT_PUBLIC_PAYSTACK_API_URL|| "https://api.paystack.co";
 
 // Create an axios instance
 const api: AxiosInstance = axios.create({
@@ -9,6 +10,16 @@ const api: AxiosInstance = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+const paystackApi = axios.create({
+  baseURL: PAYSTACK_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_PAYSTACK_SECRET_KEY}`,
+  },
+})
+
+
 
 // Flag to prevent multiple refresh calls
 let isRefreshing = false;
@@ -137,11 +148,18 @@ export const walletApi = {
   getWallet: (id: string) => api.get(`/wallets/${id}`).then(res => res.data),
   getTransactions: (id: string, page = 1, pageSize = 10) =>
     api.get(`/wallets/${id}/transactions?page=${page}&pageSize=${pageSize}`).then(res => res.data),
+  resolveAccount: (accountNo: string) => api.get(`/wallets/resolve?account_no=${accountNo}`).then(res => res.data),
 };
 
 export const transferApi = {
   create: (data: any) => api.post("/transfer/", data).then(res => res.data),
   get: (id: string) => api.get(`/transfer/${id}`).then(res => res.data),
 };
+
+export const externalTransferApi = {
+  getBanks: () => paystackApi.get("/bank").then(res => res.data),
+  confirmAcc: (data: any) => paystackApi.get(`/bank/resolve?account_number=${data.account_number}&bank_code=${data.bank_code}`).then(res => res.data),
+  create: (data: any) => api.post("/transfer/external", data).then(res => res.data),
+}
 
 export default api;

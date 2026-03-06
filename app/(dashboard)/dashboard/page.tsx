@@ -16,6 +16,8 @@ import {
   Eye,
   EyeOff,
   MoreVertical,
+  HousePlus,
+  LucideHouseWifi,
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -124,7 +126,8 @@ export default function DashboardPage() {
 
       {/* Premium Balance Card */}
       <motion.div variants={item} className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        <div className="xl:col-span-2 relative p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-brand via-brand-dark to-purple-900 border border-white/20 shadow-2xl shadow-brand/20 overflow-hidden group">
+       <div className="flex flex-col gap-3 xl:col-span-2">
+         <div className="relative p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-gradient-to-br from-brand via-brand-dark to-purple-900 border border-white/20 shadow-2xl shadow-brand/20 overflow-hidden group">
            {/* Visual depth elements */}
            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/20 blur-[80px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -150,9 +153,9 @@ export default function DashboardPage() {
                       </span>
                    </div>
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
-                  <Wallet className="text-white" size={32} />
-                </div>
+                {/* <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center"> */}
+                  <Wallet className="text-white" size={27} />
+                {/* </div> */}
               </div>
 
               <div className="mt-14 flex items-center justify-between">
@@ -170,7 +173,7 @@ export default function DashboardPage() {
                     </div>
                  </div>
                  
-                 <div className="flex -space-x-3">
+                 <div className="flex -space-x-3 hidden md:flex">
                     {[1,2,3].map(i => (
                        <div key={i} className="w-9 h-9 rounded-full border-2 border-brand-dark bg-bg-elevated/40 backdrop-blur-sm" />
                     ))}
@@ -179,7 +182,27 @@ export default function DashboardPage() {
               </div>
            </div>
         </div>
+        <div className="text-white p-4 md:p-6 flex gap-6 justify-start items-center md:justify-start">
+          <Link href={"#"}>
+             <button className="cursor-pointer hover:bg-violet-500 hover:text-white border border-gray-700 p-2 md:p-3 rounded-xl w-21 md:w-26">
+             <div className="flex flex-col items-center gap-1 md:gap-3">
+              <HousePlus size ={32}/>
+              <p className="text-xs font-bold">To Paycore</p>
+            </div>
+           </button>
+          </Link>
+           <Link href={"#"}>
+            <button className="cursor-pointer bg-violet-500 hover:bg-black hover:text-white border border-gray-700 p-2 md:p-3 rounded-xl w-21 md:w-26">
+            <div className="flex flex-col items-center gap-1 md:gap-3">
+              <LucideHouseWifi size={32}/>
+               <p className="text-xs font-bold">To Bank</p>
+            </div>
+            </button>
+           </Link>
+        </div>
 
+       </div>
+    
         <div className="grid grid-cols-1 md:grid-cols-2 xl:flex xl:flex-col gap-6">
            <div className="p-6 rounded-[2rem] bg-bg-card border border-border-default flex flex-col justify-center">
               <div className="flex items-center gap-4 mb-4">
