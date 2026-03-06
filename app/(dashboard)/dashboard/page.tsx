@@ -146,7 +146,7 @@ export default function DashboardPage() {
                    </div>
                    <div className="flex items-baseline gap-4">
                       <span className="text-white/60 text-2xl font-medium tracking-tight">{wallet?.currency || "USD"}</span>
-                      <span className="text-5xl md:text-7xl font-black tracking-tighter text-white">
+                      <span className="text-3xl md:text-7xl font-black tracking-tighter text-white">
                         {showBalance ? parseFloat(wallet?.balance || "0").toLocaleString(undefined, {
                           minimumFractionDigits: 2,
                         }) : "••••••••"}
