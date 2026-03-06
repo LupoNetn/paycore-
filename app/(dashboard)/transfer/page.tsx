@@ -44,6 +44,7 @@ export default function TransferPage() {
   const [isBankDropdownOpen, setIsBankDropdownOpen] = useState(false)
   const [resolvingAccount, setResolvingAccount] = useState(false)
   const [externalLoading, setExternalLoading] = useState(false)
+  const [showSimulationPopup, setShowSimulationPopup] = useState(false)
 
   useEffect(() => {
     const fetchWallet = async () => {
@@ -169,6 +170,7 @@ export default function TransferPage() {
     setExternalReceipientBankCode("");
     setExternalReceipientName("");
     setResolvedPaycoreUser(null);
+    setShowSimulationPopup(false);
   };
 
   const handleExternalSubmit = async (e: React.FormEvent) => {
@@ -198,6 +200,7 @@ export default function TransferPage() {
         currency: wallet.currency,
       });
       setSuccess(response.data);
+      setShowSimulationPopup(true);
       toast.success("External Transfer Successful");
     } catch (err: any) {
       toast.error(err.message || "Failed to initiate external transfer");
@@ -575,6 +578,41 @@ export default function TransferPage() {
                </p>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showSimulationPopup && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="max-w-md w-full p-8 rounded-3xl bg-bg-elevated border border-border-focus shadow-[0_0_40px_-12px_rgba(79,70,229,0.3)] relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand to-accent" />
+              <div className="w-16 h-16 rounded-full bg-brand/10 flex items-center justify-center mb-6 mx-auto border border-brand/20">
+                <Info size={32} className="text-brand-light" />
+              </div>
+              <h2 className="text-2xl font-black text-white text-center mb-3">Simulation Complete</h2>
+              <div className="space-y-4 mb-8">
+                <p className="text-sm text-text-secondary text-center leading-relaxed">
+                  Your external transfer of <strong className="text-white">{success?.amount} {success?.currency}</strong> was processed successfully in the simulation engine.
+                </p>
+                <div className="p-4 rounded-xl bg-brand/5 border border-brand/10">
+                  <p className="text-xs text-brand-light text-center leading-relaxed">
+                    <strong>Note:</strong> Paycore is currently running in an external simulator mode. No real-world funds were moved to the destination bank account.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowSimulationPopup(false)}
+                className="w-full h-12 bg-white text-black font-bold text-sm rounded-xl hover:bg-white/90 transition-all active:scale-[0.98]"
+              >
+                Acknowledge
+              </button>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>

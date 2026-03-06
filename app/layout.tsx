@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Paycore+ | High-Performance Financial Infrastructure",
   description:
     "Secure, scalable, and lightning-fast financial infrastructure for modern companies. Move money globally with sub-second finality.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 import { Toaster } from "react-hot-toast";

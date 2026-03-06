@@ -39,6 +39,8 @@ export default function HistoryPage() {
     try {
       const res = await walletApi.getTransactions(user.id, page, pageSize);
       setTransactions(res.transactions || []);
+      console.log(res)
+      console.log(transactions)
     } catch (err) {
       console.error("Failed to fetch transactions:", err);
     } finally {
