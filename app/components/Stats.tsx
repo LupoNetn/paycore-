@@ -11,7 +11,7 @@ export default function Stats() {
   return (
     <section className="py-20 border-y border-white/[0.05] bg-bg-primary">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, i) => (
             <div 
               key={i} 

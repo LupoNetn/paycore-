@@ -5,7 +5,7 @@ import { ArrowRight, Code } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex flex-col items-center justify-center pt-32 pb-20 bg-bg-primary">
+    <section className="relative overflow-hidden min-h-[85vh] flex flex-col items-center justify-center pt-32 pb-20 bg-bg-primary">
       {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand/5 blur-[120px] rounded-[100%] pointer-events-none" />
 
@@ -17,7 +17,7 @@ export default function Hero() {
         </div>
 
         {/* Dual Heading */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight mb-8 text-white leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight mb-6 sm:mb-8 text-white leading-tight">
           Financial power, <br className="hidden sm:block" />
           <span className="text-text-secondary">for people and platforms.</span>
         </h1>
@@ -47,11 +47,11 @@ export default function Hero() {
         </div>
 
         {/* Audience row */}
-        <div className="mt-20 flex gap-12 text-sm text-text-muted justify-center border-t border-white/10 pt-10 w-full max-w-3xl">
-          <div className="flex items-center gap-2 text-text-secondary">
+        <div className="mt-16 sm:mt-20 flex flex-col sm:flex-row gap-4 sm:gap-12 text-sm text-text-muted justify-center border-t border-white/10 pt-8 sm:pt-10 w-full max-w-3xl">
+          <div className="flex items-center justify-center gap-2 text-text-secondary">
             <span className="text-white font-medium">For Users:</span> Instant Transfers & Wallets
           </div>
-          <div className="flex items-center gap-2 text-text-secondary">
+          <div className="flex items-center justify-center gap-2 text-text-secondary">
             <span className="text-white font-medium">For Devs:</span> RESTful API & Webhooks
           </div>
         </div>

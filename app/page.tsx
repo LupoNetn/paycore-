@@ -9,19 +9,19 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-bg-primary font-sans text-white selection:bg-white/20 selection:text-white">
+    <main className="min-h-screen bg-bg-primary font-sans text-white selection:bg-white/20 selection:text-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <Stats />
 
       {/* For Users Section */}
-      <section id="users" className="py-24 md:py-32 border-b border-white/[0.05]">
+      <section id="users" className="py-16 md:py-32 border-b border-white/[0.05]">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <div className="w-12 h-12 rounded-lg bg-white/[0.05] flex items-center justify-center mb-6 border border-white/10">
               <User size={24} className="text-white" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-white">
               For everyday life. <br className="hidden md:block"/> Send, spend, and manage.
             </h2>
             <p className="text-text-secondary text-lg max-w-2xl leading-relaxed">
@@ -29,7 +29,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 border-t border-white/[0.05] pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 border-t border-white/[0.05] pt-10 md:pt-12">
             <FeatureCard
               title="Instant Peer-to-Peer"
               description="Send money directly to other Paycore users instantly, without intermediate delays or clearing periods."
@@ -51,9 +51,9 @@ export default function Home() {
       </section>
 
       {/* For Developers Section */}
-      <section id="developers" className="py-24 md:py-32 border-b border-white/[0.05] bg-white/[0.01]">
+      <section id="developers" className="py-16 md:py-32 border-b border-white/[0.05] bg-white/[0.01]">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start lg:items-center mb-16">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start lg:items-center mb-10 md:mb-16">
             <div className="lg:w-1/2">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center border border-brand/20">
@@ -64,7 +64,7 @@ export default function Home() {
                   API Coming Soon
                 </div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-4 text-white">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-white">
                 For developers. <br className="hidden md:block"/> Infrastructure built for scale.
               </h2>
               <p className="text-text-secondary text-lg leading-relaxed">
@@ -97,7 +97,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 border-t border-white/[0.05] pt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 border-t border-white/[0.05] pt-10 md:pt-12">
             <FeatureCard
               title="RESTful API"
               description="A deeply documented, predictable API interface to programmatically generate accounts, handle ledgers, and execute transfers."
@@ -119,9 +119,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 text-center">
+      <section className="py-20 md:py-32 text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 tracking-tight text-white">
             Ready to get started?
           </h2>
           <p className="text-text-secondary text-lg mb-10 max-w-xl mx-auto">
